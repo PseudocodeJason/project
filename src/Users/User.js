@@ -14,7 +14,7 @@ export const User = () => {
   const [filter, setfilter] = useState("");
 
   const filteredList = userAvatars.filter((user) =>
-    user.email.startsWith(filter)
+    user.email.toLowerCase().startsWith(filter.toLowerCase())
   );
 
   const handleLogout = () => {
@@ -30,7 +30,7 @@ export const User = () => {
   if (error) {
     return <div>{error}<br /><b>Status: <br></ br> Error</b></div>;
   }
-  if (!token || token.length === 0) {
+  if (!token || token.length === 0 || status === 'failed') {
     return <div><br /><b>Status:</b> Please login to see avatars</div>;
   }
 

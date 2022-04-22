@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { loginToAccount } from "../slices/loginSlice";
+import { registerAccount } from "../slices/registrationSlice";
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../LoginForm/LoginForm.css";
@@ -12,6 +13,12 @@ export const LoginForm = () => {
 
   const handleLogin = () => {
     dispatch(loginToAccount({email, password}));
+    setEmail("");
+    setPassword("");
+  }
+
+  const handleRegistration = () => {
+    dispatch(registerAccount({email, password}));
     setEmail("");
     setPassword("");
   }
@@ -43,6 +50,12 @@ export const LoginForm = () => {
         onClick={() => handleLogin()}
       >
         Log in
+      </Button>
+      <Button
+        disabled={email.length === 0 || password.length === 0}
+        onClick={() => handleRegistration()}
+      >
+        Register
       </Button>
     </div>
   );
