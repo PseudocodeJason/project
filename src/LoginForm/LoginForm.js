@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { loginToAccount } from "../slices/loginSlice";
 
-
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +36,5 @@ export const LoginForm = () => {
       </button>
     </div>
   );
-  //username = 'bobby' - WRONG
   return form;
 };
