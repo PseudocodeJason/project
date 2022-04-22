@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { loginToAccount } from "../slices/loginSlice";
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "../LoginForm/LoginForm.css";
 
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -15,25 +18,32 @@ export const LoginForm = () => {
 
   const form = (
     <div className="login-form">
-      <h1>Login</h1>
+      <h1>REQ | RES</h1>
+      <hr></hr>
+      <h3>Log In to Your Account</h3>
+      <br />
       <input
         type="text"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        placeholder= "example@reqres.in" 
       />
+      <br />
       <br />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        placeholder= "password" 
       />
       <br />
-      <button
+      <br />
+      <Button
         disabled={email.length === 0 || password.length === 0}
         onClick={() => handleLogin()}
       >
-        Login
-      </button>
+        Log in
+      </Button>
     </div>
   );
   return form;

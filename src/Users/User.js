@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { fetchUsers } from "../slices/userSlice";
 import { loginToAccount } from "../slices/loginSlice";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "../Users/UserStyles.css";
 
 export const User = () => {
@@ -27,21 +28,30 @@ export const User = () => {
   }, [dispatch, status]);
 
   if (error) {
-    return <div>{error} Error</div>;
+    return <div>{error}<br /><b>Status: <br></ br> Error</b></div>;
   }
   if (!token || token.length === 0) {
-    return <div>Please login to see avatars</div>;
+    return <div><br /><b>Status:</b> Please login to see avatars</div>;
   }
 
   return (
     <div className="App">
-      <h1>Hello ReqRes users!</h1>
+       <br />
+          <br />
+          <hr></hr>
+          <h1 id="WelcomePage">Welcome user!</h1>
+          <br />
+      <h5>Filter users on REQRES:</h5>
       <input
         type="text"
         value={filter}
         onChange={(e) => setfilter(e.target.value)}
+        placeholder= "filter by example@reqres.in" 
       ></input>
-      <br></br>
+      <br />
+      <br />
+      <h3>Current registered users on REQRES:</h3>
+          <br />
       <div className="flex">
         {filteredList.length &&
           filteredList.map((user) => {
@@ -56,7 +66,12 @@ export const User = () => {
             );
           })}
       </div>
-      <button onClick={() => handleLogout()}>Logout</button>
+      <br />
+      <br />
+      <button 
+        onClick={() => handleLogout()}>
+          Sign out
+      </button>
     </div>
   );
 };
