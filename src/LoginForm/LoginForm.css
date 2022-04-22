@@ -1,0 +1,14 @@
+input {
+    color: black;
+    width: calc(20%)
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+ }
+
+ Button {
+    width: calc(20%)
+ }
+
+ 
